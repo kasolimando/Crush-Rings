@@ -1,0 +1,13 @@
+class Vacia extends Estado< ficha_redonda, CasillaCuadrada>{
+    void AddFicha(ficha_redonda f, CasillaCuadrada c){
+        c.ficha=f;
+        ficha_redonda fg=c.GetFicha(), fp=fg.Getpeque(),fm=fg.Getmedi();
+        if(fg.GetColor() == fp.GetColor() && fm.GetColor() == fp.GetColor()){
+            fg.Vaciar(); fp.Vaciar(); fm.Vaciar();
+        }else{
+            Reglas r1= new Reglas();
+            r1.Match(c);
+            c.ocupada=new Lleno();
+        }
+    }
+}

@@ -1,0 +1,14 @@
+class CasillaCuadrada extends Casilla< ficha_redonda>{
+    
+    CasillaCuadrada Der,Iz,Aba,Arri,Arri_Der,Arri_Iz,Aba_Der,Aba_Iz;
+    Estado< ficha_redonda,CasillaCuadrada> ocupada = new Vacia();
+    void CasillaCuadrada(){}
+    
+    void AddFicha(ficha_redonda f){
+        ocupada.AddFicha(f,this);
+    }
+
+    ficha_redonda GetFicha(){
+        return this.ficha;
+    }
+} 

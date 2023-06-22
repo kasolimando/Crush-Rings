@@ -1,0 +1,3 @@
+interface Prueba< C>{
+    public void Match(C casilla);
+}

@@ -1,0 +1,11 @@
+abstract class Ficha< C, T, F>{
+    C Color;
+    T Tamano;
+    F Forma;
+    
+    abstract void Generar();
+    abstract C GetColor();
+    abstract T GetTamano();
+    abstract F GetForma();
+    abstract void Vaciar();
+}

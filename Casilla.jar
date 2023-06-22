@@ -1,0 +1,7 @@
+abstract class Casilla< F>{
+    
+    F ficha;
+    
+    abstract void AddFicha(F f);
+    abstract F GetFicha();
+}

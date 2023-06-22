@@ -1,0 +1,64 @@
+public class CrushRings{
+
+    public static void main(String []args){
+        ficha_redonda ficha= new ficha_redonda();
+        ficha.Generar();
+        ficha_redonda ficha2= new ficha_redonda();
+        ficha2.Generar();
+        //Casilla 1
+        CasillaCuadrada Casilla1 = new CasillaCuadrada();
+        
+        System.out.println("-----------------------" );
+        
+        //Casilla 2
+        CasillaCuadrada Casilla2 = new CasillaCuadrada();
+        Casilla1.Der =Casilla2;
+        Casilla2.Iz= Casilla1;
+       
+        System.out.println("-----------------------" );
+        
+        //Casilla 3
+        CasillaCuadrada Casilla3 = new CasillaCuadrada();
+        Casilla2.Der =Casilla3;
+        Casilla3.Iz=Casilla2;
+        
+        Casilla1.AddFicha(ficha);
+         
+         Casilla2.AddFicha(ficha2);
+        Casilla3.AddFicha(ficha);
+        
+        System.out.println("-----------------------" );
+     
+        System.out.println("Casilla 1 grande:"+Casilla1.ficha.Color + " "+ Casilla1.ficha.Forma );
+        System.out.println("Casilla 1 medi:"+Casilla1.ficha.F_medi.Color + " "+ Casilla1.ficha.F_medi.Forma );
+        System.out.println("Casilla 1 peque:"+Casilla1.ficha.F_peque.Color + " "+ Casilla2.ficha.F_medi.Forma );
+        System.out.println("");
+        System.out.println("Casilla 2 grande:"+Casilla2.ficha.Color + " "+ Casilla1.ficha.F_medi.Forma );
+        System.out.println("Casilla 2 medi:"+Casilla2.ficha.F_medi.Color + " "+ Casilla1.ficha.F_medi.Forma );
+        System.out.println("Casilla 2 peque:"+Casilla2.ficha.F_peque.Color + " "+ Casilla2.ficha.F_medi.Forma );
+        System.out.println("");
+        System.out.println("Casilla 3 grande:"+Casilla3.ficha.Color + " "+ Casilla1.ficha.F_medi.Forma );
+        System.out.println("Casilla 3 medi:"+Casilla3.ficha.F_medi.Color + " "+ Casilla1.ficha.F_medi.Forma );
+        System.out.println("Casilla 3 peque:"+Casilla3.ficha.F_peque.Color + " "+ Casilla2.ficha.F_medi.Forma );
+        ficha_redonda ficha4= new ficha_redonda();
+        ficha4.Generar();
+        Casilla1.AddFicha(ficha4);
+        System.out.println("-----------------------" );
+        System.out.println("Prueba de agragar");
+        System.out.println("ficha "+ficha4.Color+" "+ficha4.F_medi.Color+" "+ficha4.F_peque.Color);
+        System.out.println("Casilla 1 grande:"+Casilla1.ficha.Color + " "+ Casilla1.ficha.Forma );
+        System.out.println("Casilla 1 medi:"+Casilla1.ficha.F_medi.Color + " "+ Casilla1.ficha.F_medi.Forma );
+        System.out.println("Casilla 1 peque:"+Casilla1.ficha.F_peque.Color + " "+ Casilla2.ficha.F_medi.Forma );
+        
+        
+        
+        //Casilla 4
+        CasillaCuadrada Casilla4 = new CasillaCuadrada();
+        Casilla3.Aba =Casilla4;
+        
+        //Casilla 5
+        CasillaCuadrada Casilla5 = new CasillaCuadrada();
+        Casilla4.Der =Casilla5;
+        Casilla2.Aba=Casilla5;
+    }
+}

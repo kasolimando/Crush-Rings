@@ -1,0 +1,45 @@
+class ficha_redonda extends Ficha< Colores, Tamanos, Formas>{
+    
+    ficha_redonda F_medi, F_peque;
+    
+    void ficha_redonda(){}
+    
+    void llenar(int n){
+       int num=(int)(Math.random()*4+0);
+       this.Color=Colores.values()[num];
+       this.Tamano=Tamanos.values()[n];
+       this.Forma=Formas.values()[0];
+    }
+    
+    void Generar(){
+        this.F_medi= new ficha_redonda();
+        this.F_peque= new ficha_redonda();
+        this.llenar(0);
+        this.F_medi.llenar(1);
+        this.F_peque.llenar(2);
+        if(this.Color == Colores.values()[3] && this.F_peque.Color ==this.Color && this.F_medi.Color ==this.Color){
+            this.Color=Colores.values()[1];
+        }
+    }
+
+    void Vaciar(){
+        this.Color = Colores.values()[3];
+    }
+    ficha_redonda Getpeque(){
+        return this.F_peque;
+    }
+    
+    ficha_redonda Getmedi(){
+        return this.F_medi;
+    }
+    Colores GetColor(){
+        return this.Color;
+    }
+    Tamanos GetTamano(){
+        return this.Tamano;
+    }
+    
+    Formas GetForma(){
+        return this.Forma;
+    }
+}

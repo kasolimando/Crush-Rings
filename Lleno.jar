@@ -1,0 +1,14 @@
+class Lleno extends Estado< ficha_redonda, CasillaCuadrada>{
+    void AddFicha(ficha_redonda f, CasillaCuadrada c){
+        ficha_redonda fg=c.GetFicha(), fp=fg.Getpeque(),fm=fg.Getmedi();
+        Colores CV=Colores.values()[3];
+        if(fg.GetColor() == CV && fp.GetColor() == CV && fm.GetColor() == CV){
+            c.ocupada=new Vacia();
+            c.ocupada.AddFicha(f,c);
+        }else if(fg.GetColor() == CV || fp.GetColor() == CV ||  fm.GetColor() == CV){
+            c.ocupada=new Completar();
+            c.ocupada.AddFicha(f,c);
+        }else
+            System.out.println("Casilla Ocupada");
+    }
+}

@@ -1,0 +1,12 @@
+class Puntaje{
+    int puntaje = 0;
+    
+    void Puntaje(){}
+    void Sumar(int n){
+        puntaje+=n;
+    }
+    
+    int GetPuntaje(){
+        return puntaje;
+    }
+}

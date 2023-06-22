@@ -1,0 +1,16 @@
+class Completar extends Estado< ficha_redonda, CasillaCuadrada>{
+    void AddFicha(ficha_redonda f, CasillaCuadrada c){
+        ficha_redonda fg=c.GetFicha(), fp=fg.Getpeque(),fm=fg.Getmedi(),Fm=f.Getmedi(),Fp=f.Getpeque();
+        System.out.println("entre");
+        Colores CV=Colores.values()[3];
+        if(fg.GetColor() == CV && f.GetColor()!= CV){
+            fg.Color=f.Color;}
+        if(fp.GetColor() == CV && Fp.GetColor() != CV){
+            fp.Color=Fp.Color;
+        }
+        if(fm.GetColor() == CV && Fm.GetColor() != CV){
+            fm.Color=Fm.Color;
+        }
+        c.ocupada=new Lleno();
+    }
+}

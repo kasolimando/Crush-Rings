@@ -1,0 +1,195 @@
+class Reglas implements Prueba< CasillaCuadrada>{
+
+    boolean Comparar(ficha_redonda ficha, ficha_redonda f2) {
+        // if(flag==1){
+        // if(casilla.Iz.ficha!=null){
+        System.out.println("ENTRA COMPARAR");
+        System.out.println("COMPARAR IZ TRUE");
+        /*System.out.println("Color de FICHA " + ficha.GetColor());
+        System.out.println("Color de FICHA MED " + ficha.F_medi.GetColor());
+        System.out.println("Color de FICHA PEQUE " + ficha.F_peque.GetColor());
+        System.out.println("");
+        System.out.println("Color de FICHA IZ " + f2.GetColor());
+        System.out.println("Color de FICHA IZ MED " + f2.F_medi.Color);
+        System.out.println("Color de FICHA IZ PEQUE " + f2.F_peque.Color);*/
+
+        if (ficha.GetColor().equals(f2.GetColor()) || ficha.GetColor().equals(f2.F_medi.GetColor())
+                || ficha.GetColor().equals(f2.F_peque.GetColor())) {
+                    //Caso especial para color "Vacio"
+                    if(ficha.GetColor()==Colores.values()[3]){return false;}
+            /*
+             * System.out.println("COMPARAR IZ TRUE");
+             * System.out.println("Color de FICHA "+ficha.Color);
+             * System.out.println("Color de FICHA MED "+ficha.F_medi.GetColor());
+             * System.out.println("Color de FICHA PEQUE "+ficha.F_peque.GetColor());
+             * System.out.println(""); System.out.println("Color de FICHA IZ "+f2.Color);
+             * System.out.println("Color de FICHA IZ MED "+f2.F_medi.Color);
+             * System.out.println("Color de FICHA IZ PEQUE "+f2.F_peque.Color);
+             * System.out.println(ficha.Color.equals(f2.Color));
+             * System.out.println(ficha.Color.equals(f2.F_medi.Color));
+             * System.out.println(ficha.Color.equals(f2.F_peque.Color));
+             */
+            System.out.println("PASO EL IF");
+            return true;
+            // }
+            // }
+            /*
+             * } if(flag==2){ if(casilla.Der.ficha!=null){ ficha_redonda
+             * f2=casilla.Der.GetFicha(); if(ficha.GetColor().equals(f2.GetColor()) ||
+             * ficha.Color.equals(f2.F_medi.GetColor())||
+             * ficha.Color.equals(f2.F_peque.GetColor())); return true; } return false;
+             */
+        }
+        return false;
+    }
+
+    public void Match(CasillaCuadrada casilla) {
+        System.out.println("Entro MAtch");
+        int cont=0;int cont2=0;int cont3=0;
+        CasillaCuadrada aux = casilla;
+        ficha_redonda ficha = new ficha_redonda();
+        ficha=casilla.GetFicha();
+
+        while (casilla.Der != null) {
+            if (casilla.Der.ficha != null) {
+                System.out.println("Entra if Der");
+                if (Comparar(casilla.GetFicha(), casilla.Der.GetFicha())) {
+                    cont++;
+                    System.out.println("SumaCont");
+                    System.out.println("CONTADOR= " + cont);
+                    
+                }
+                if (Comparar(ficha.F_medi, casilla.Iz.GetFicha())){cont2++;}
+                if (Comparar(ficha.F_peque, casilla.Iz.GetFicha())){cont3++;}
+
+            }
+            casilla = casilla.Der;
+        }
+        if (cont >= 2) {
+            System.out.println("HAY MATCH");
+            Elim(casilla, casilla.ficha.GetColor(),1);
+
+        }
+         if(cont2>=2){Elim(casilla,ficha.F_medi.GetColor(),1);}
+        if(cont3>=2){Elim(casilla,ficha.F_peque.GetColor(),1);}
+        
+
+        casilla = aux;
+
+        while (casilla.Iz != null) {
+            if (casilla.Iz.ficha != null) {
+                System.out.println("Entra if IZq");
+                if (Comparar(ficha, casilla.Iz.GetFicha())) {
+                    System.out.println("SumaCont");
+                    cont++;
+                    System.out.println("CONTADOR= " + cont);
+                }
+                
+                System.out.println(casilla.Iz);
+                System.out.println(casilla.Iz.GetFicha().GetColor());
+                if (Comparar(ficha.F_medi, casilla.Iz.GetFicha())){cont2++;}
+                if (Comparar(ficha.F_peque, casilla.Iz.GetFicha())){cont3++;}
+            }
+            casilla = casilla.Iz;
+        }
+        if (cont >= 2) {
+            System.out.println("HAY MATCH");
+            Elim(casilla, casilla.ficha.GetColor(),1);
+
+        }
+        if(cont2>=2){Elim(casilla,ficha.F_medi.GetColor(),1);}
+        if(cont3>=2){Elim(casilla,ficha.F_peque.GetColor(),1);}
+
+        casilla = aux;
+        cont = 0;
+        while (casilla.Arri != null) {
+            if (casilla.Arri.ficha != null) {
+                System.out.println("Entra if IZq");
+                if (Comparar(casilla.GetFicha(), casilla.Arri.GetFicha())) {
+                    System.out.println("SumaCont");
+                    cont++;
+                    System.out.println("CONTADOR= " + cont);
+                }
+                if (Comparar(ficha.F_medi, casilla.Iz.GetFicha())){cont2++;}
+                if (Comparar(ficha.F_peque, casilla.Iz.GetFicha())){cont3++;}
+            }
+            casilla = casilla.Arri;
+        }
+        if (cont >= 2) {
+            System.out.println("HAY MATCH");
+            Elim(casilla, casilla.ficha.GetColor(),2);
+
+        }
+         if(cont2>=2){Elim(casilla,ficha.F_medi.GetColor(),1);}
+        if(cont3>=2){Elim(casilla,ficha.F_peque.GetColor(),1);}
+        casilla = aux;
+        while (casilla.Aba != null) {
+            if (casilla.Aba.ficha != null) {
+                System.out.println("Entra if IZq");
+                if (Comparar(casilla.GetFicha(), casilla.Aba.GetFicha())) {
+                    System.out.println("SumaCont");
+                    cont++;
+                    System.out.println("CONTADOR= " + cont);
+                }
+                if (Comparar(ficha.F_medi, casilla.Iz.GetFicha())){cont2++;}
+                if (Comparar(ficha.F_peque, casilla.Iz.GetFicha())){cont3++;}
+
+            }
+            casilla = casilla.Aba;
+        }
+        if (cont >= 2) {
+            System.out.println("HAY MATCH");
+            Elim(casilla, casilla.ficha.GetColor(),2);
+
+        }
+         if(cont2>=2){Elim(casilla,ficha.F_medi.GetColor(),1);}
+        if(cont3>=2){Elim(casilla,ficha.F_peque.GetColor(),1);}
+
+
+        System.out.println("Sale Match");
+    }
+
+    void Elim(CasillaCuadrada casilla, Colores color, int flag) {
+
+        // Se mueve hacia el borde izquierdo del tablero
+        if (flag == 1) {
+            while (casilla.Iz != null) {
+                casilla = casilla.Iz;
+            }
+            // Empezando del extremo izquierdo se mueve hacia la derecha eliminando siempre
+            // el color donde hubo Match
+            while (casilla != null) {
+                if (casilla.ficha.Color.equals(color)) {
+                    casilla.ficha.Vaciar();
+                }
+                if (casilla.ficha.F_medi.Color.equals(color)) {
+                    casilla.ficha.F_medi.Vaciar();
+                }
+                if (casilla.ficha.F_peque.Color.equals(color)) {
+                    casilla.ficha.F_peque.Vaciar();
+                }
+                casilla = casilla.Der;
+            }
+        }
+        if (flag == 2) {
+            while (casilla.Arri != null) {
+                casilla = casilla.Arri;
+            }
+            // Empezando del extremo Superior eliminando siempre hacia abajo
+            // el color donde hubo Match
+            while (casilla != null) {
+                if (casilla.ficha.Color.equals(color)) {
+                    casilla.ficha.Vaciar();
+                }
+                if (casilla.ficha.F_medi.Color.equals(color)) {
+                    casilla.ficha.F_medi.Vaciar();
+                }
+                if (casilla.ficha.F_peque.Color.equals(color)) {
+                    casilla.ficha.F_peque.Vaciar();
+                }
+                casilla = casilla.Aba;
+            }
+        }
+
+    }
+}
